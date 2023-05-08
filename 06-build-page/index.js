@@ -86,22 +86,17 @@ const assetsDir = path.join(__dirname, 'assets');
 
 async function copyFolder(src, dest) {
   try {
-    // Создаем папку назначения, если она не существует
     await fs.promises.mkdir(dest, { recursive: true });
     
-    // Получаем список файлов и папок в исходной папке
     const entries = await fs.promises.readdir(src, { withFileTypes: true });
 
-    // Перебираем все элементы в папке
     for (const entry of entries) {
       const srcPath = path.join(src, entry.name);
       const destPath = path.join(dest, entry.name);
 
       if (entry.isDirectory()) {
-        // Если текущий элемент является папкой, рекурсивно копируем ее содержимое
         await copyFolder(srcPath, destPath);
       } else {
-        // Если текущий элемент является файлом, просто копируем его
         await fs.promises.copyFile(srcPath, destPath);
       }
     }
