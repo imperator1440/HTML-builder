@@ -14,7 +14,7 @@ fs.readdir(dirPath, (err, files) => {
     const filePath = path.join(__dirname, 'secret-folder', file);
 
     fs.stat(filePath, (err, stats) => {
-      if(err) {
+      if (err) {
         console.log(err);
         return;
       }
