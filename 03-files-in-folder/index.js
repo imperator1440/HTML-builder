@@ -23,11 +23,10 @@ fs.readdir(dirPath, (err, files) => {
         const extension = path.extname(filePath);
         const size = stats.size;
     
-        console.log(`File name: ${file.split('.')[0]}`);
-        console.log(`File extension: ${extension}`);
-        console.log(`File size: ${size} byte\n----------------------------`);
+        console.log(`${file.split('.')[0]} - ${extension} - ${size}`);
+        console.log('------------------------');
       } else {
-        console.log(`${file} is not a file\n----------------------------`);
+        console.log(`${file} is not a file\n------------------------`);
       }
     });
   });
